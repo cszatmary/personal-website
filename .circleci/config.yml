@@ -1,0 +1,74 @@
+version: 2.1
+
+aliases:
+  - &cache_key personal-website-20200831-{{ checksum "yarn.lock" }}
+  - &restore_cache
+    name: Restore yarn cache
+    keys:
+      - *cache_key
+
+jobs:
+  install:
+    docker:
+      - image: cszatma/cimg-node:lts
+    steps:
+      - checkout
+      - restore_cache: *restore_cache
+      - run:
+          name: Install dependencies
+          command: yarn install --frozen-lockfile
+      - save_cache:
+          name: Cache node_modules
+          key: *cache_key
+          paths:
+            - node_modules/
+  lint:
+    docker:
+      - image: cszatma/cimg-node:lts
+    steps:
+      - checkout
+      - restore_cache: *restore_cache
+      - run:
+          name: Run linter
+          command: yarn lint
+  build:
+    docker:
+      - image: cszatma/cimg-node:lts
+    steps:
+      - checkout
+      - restore_cache: *restore_cache
+      - run:
+          name: Build app
+          command: yarn build
+      - persist_to_workspace:
+          root: ~/project
+          paths:
+            - out
+  deploy-dev:
+    docker:
+      - image: cszatma/cimg-node:lts
+    steps:
+      - checkout
+      - attach_workspace:
+          at: ~/project
+      - run:
+          name: Publish dev version
+          command: |
+            git config --global user.name Christopher Szatmary
+            git config --global user.email cs@christopherszatmary.com
+            publisher -v -T develop
+
+workflows:
+  build-deploy:
+    jobs:
+      - install
+      - lint:
+          requires:
+            - install
+      - build:
+          requires:
+            - install
+      - deploy-dev:
+          requires:
+            - lint
+            - build
