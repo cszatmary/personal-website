@@ -43,7 +43,7 @@ jobs:
       - persist_to_workspace:
           root: ~/project
           paths:
-            - out
+            - .next
   deploy-dev:
     docker:
       - image: cszatma/cimg-node:lts
@@ -53,10 +53,7 @@ jobs:
           at: ~/project
       - run:
           name: Publish dev version
-          command: |
-            git config --global user.name Christopher Szatmary
-            git config --global user.email cs@christopherszatmary.com
-            publisher -v -T develop
+          command: vercel --token $VERCEL_TOKEN
 
 workflows:
   build-deploy:
