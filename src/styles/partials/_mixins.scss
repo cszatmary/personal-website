@@ -1,0 +1,51 @@
+@mixin media-breakpoint($size) {
+  @media (min-width: $size) {
+    @content;
+  }
+}
+
+@mixin media-range($min, $max) {
+  @media (min-width: $min) and (max-width: $max) {
+    @content;
+  }
+}
+
+@mixin set-background($image) {
+  background: url($image) no-repeat center center;
+  background-size: cover;
+}
+
+@mixin generate-border($thickness, $color, $side) {
+  @if $side == all {
+    border: $thickness solid $color;
+  } @else {
+    border-#{$side}: $thickness solid $color;
+  }
+}
+
+@mixin set-font($weight, $font) {
+  font-weight: $weight;
+  font-family: $font;
+}
+
+@mixin set-color($property, $color, $hover-color: $color) {
+  #{$property}: $color;
+
+  &:hover {
+    #{$property}: $hover-color;
+  }
+}
+
+@mixin set-property($property, $position, $value...) {
+  @if $position == all {
+    #{$property}: $value;
+  } @else if $position == x {
+    #{$property}-left: $value;
+    #{$property}-right: $value;
+  } @else if $position == y {
+    #{$property}-top: $value;
+    #{$property}-bottom: $value;
+  } @else {
+    #{$property}-#{$position}: $value;
+  }
+}

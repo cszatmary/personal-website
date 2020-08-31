@@ -1,0 +1,18 @@
+@import "../partials/variables";
+@import "../partials/mixins";
+
+.footer {
+  background-color: $footer-blue;
+  min-height: 4rem;
+  font-size: 0.875rem;
+  display: flex;
+  align-items: center;
+}
+
+.csSpan {
+  display: block;
+
+  @include media-breakpoint($md) {
+    display: inline-block;
+  }
+}
