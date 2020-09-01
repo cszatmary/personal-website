@@ -52,7 +52,7 @@ export const Navbar: FunctionComponent<NavbarProps> = (props) => {
     <RSNavbar
       className={classNames(styles.csNavbar, props.className)}
       dark
-      // fixed="top"
+      fixed="top"
       expand="md"
       role="navigation"
     >

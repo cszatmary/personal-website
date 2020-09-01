@@ -16,7 +16,7 @@ const navItems = new Map([
 
 const MyApp: FunctionComponent<AppProps> = ({ Component, pageProps }) => {
   return (
-    <>
+    <div className="d-flex flex-column full-min-height">
       <Head>
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
         <link
@@ -31,7 +31,7 @@ const MyApp: FunctionComponent<AppProps> = ({ Component, pageProps }) => {
       {/* eslint-disable-next-line react/jsx-props-no-spreading */}
       <Component {...pageProps} />
       <Footer />
-    </>
+    </div>
   );
 };
 
