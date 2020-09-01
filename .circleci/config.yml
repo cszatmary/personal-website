@@ -1,0 +1,42 @@
+version: 2.1
+
+aliases:
+  - &cache_key personal-website-20200831-{{ checksum "yarn.lock" }}
+
+jobs:
+  build-test-deploy:
+    docker:
+      - image: cszatma/cimg-node:lts
+    steps:
+      - checkout
+      - restore_cache:
+          name: Restore yarn cache
+          keys:
+            - *cache_key
+      - run:
+          name: Install dependencies
+          command: yarn install --frozen-lockfile
+      - save_cache:
+          name: Cache node_modules
+          key: *cache_key
+          paths:
+            - node_modules/
+      - run:
+          name: Run linter
+          command: yarn lint
+      - run:
+          name: Link vercel project
+          command: mkdir -p .vercel && echo "{\"orgId\":\"$VERCEL_ORG_ID\",\"projectId\":\"$VERCEL_PROJECT_ID\"}" > .vercel/project.json
+      - run:
+          name: Deploy to vercel
+          command: |
+            if [[ "$CIRCLE_BRANCH" == "master" ]]; then
+              vercel --prod --token $VERCEL_TOKEN
+            else
+              vercel --token $VERCEL_TOKEN
+            fi
+
+workflows:
+  build-test-deploy:
+    jobs:
+      - build-test-deploy
