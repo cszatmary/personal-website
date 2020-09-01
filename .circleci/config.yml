@@ -28,7 +28,7 @@ jobs:
           name: Link vercel project
           command: mkdir -p .vercel && echo "{\"orgId\":\"$VERCEL_ORG_ID\",\"projectId\":\"$VERCEL_PROJECT_ID\"}" > .vercel/project.json
       - run:
-          name: Publish dev version
+          name: Deploy to vercel
           command: |
             if [[ "$CIRCLE_BRANCH" == "master" ]]; then
               vercel --prod --token $VERCEL_TOKEN
