@@ -52,6 +52,9 @@ jobs:
       - attach_workspace:
           at: ~/project
       - run:
+          name: Link vercel project
+          command: mkdir -p .vercel && echo "{\"orgId\":\"$VERCEL_ORG_ID\",\"projectId\":\"$VERCEL_PROJECT_ID\"}" > .vercel/project.json
+      - run:
           name: Publish dev version
           command: vercel --token $VERCEL_TOKEN
 
