@@ -37,6 +37,6 @@ jobs:
             fi
 
 workflows:
-  build-deploy:
+  build-test-deploy:
     jobs:
       - build-test-deploy
