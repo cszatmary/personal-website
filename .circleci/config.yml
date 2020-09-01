@@ -30,10 +30,9 @@ jobs:
       - run:
           name: Deploy to vercel
           command: |
+            vercel --token $VERCEL_TOKEN
             if [[ "$CIRCLE_BRANCH" == "master" ]]; then
               vercel --prod --token $VERCEL_TOKEN
-            else
-              vercel --token $VERCEL_TOKEN
             fi
 
 workflows:
