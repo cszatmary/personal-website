@@ -1,0 +1,40 @@
+@mixin shake($n) {
+  0% {
+    transform: rotateZ(0);
+  }
+  $pos: 1;
+  @for $i from 1 through 9 {
+    $pos: $pos * -1;
+    $mag: ($n / $i) * $pos;
+    #{$i * 10%} {
+      transform: rotateZ($mag * 1deg);
+    }
+  }
+  100% {
+    transform: rotateZ(0);
+  }
+}
+
+@keyframes shake {
+  @include shake(30);
+}
+
+.csAnimation {
+  display: inline-block;
+}
+
+.csAnimationInfinite {
+  animation-iteration-count: infinite !important;
+}
+
+.shake {
+  animation: shake 1s;
+}
+
+.grow {
+  transition: all 0.2s ease-in-out;
+
+  &:hover {
+    transform: scale(1.5);
+  }
+}

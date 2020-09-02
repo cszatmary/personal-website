@@ -2,6 +2,7 @@ import React, { FunctionComponent } from "react";
 import Head from "next/head";
 import type { AppProps } from "next/app";
 import "bootstrap/dist/css/bootstrap.css";
+import "devicon/devicon.css";
 import "@/styles/globals.scss";
 import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
@@ -9,7 +10,6 @@ import { Footer } from "@/components/Footer";
 const navItems = new Map([
   ["intro", "/"],
   ["about", "/about"],
-  ["skills", "/skills"],
   ["portfolio", "/portfolio"],
   ["contact", "/contact"],
 ]);
