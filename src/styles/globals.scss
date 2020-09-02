@@ -1,5 +1,5 @@
-@import "partials/mixins";
-@import "partials/variables";
+@use "partials/variables" as *;
+@use "partials/mixins" as *;
 
 .full-height {
   min-height: calc(100vh - 4rem);

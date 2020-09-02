@@ -23,11 +23,6 @@
   }
 }
 
-@mixin set-font($weight, $font) {
-  font-weight: $weight;
-  font-family: $font;
-}
-
 @mixin set-color($property, $color, $hover-color: $color) {
   #{$property}: $color;
 
