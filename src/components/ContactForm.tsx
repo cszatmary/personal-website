@@ -1,6 +1,7 @@
 import React, { Component, FormEvent, ChangeEvent } from "react";
 import { Form, FormGroup, Input, InputProps, FormFeedback } from "reactstrap";
 import validator from "validator";
+import ReCAPTCHA from "react-google-recaptcha";
 
 import styles from "@/styles/components/ContactForm.module.scss";
 import { classNames } from "@/utils/mod";
@@ -11,6 +12,7 @@ export interface FormValues {
   email: string;
   subject: string;
   message: string;
+  recaptchaKey: string;
 }
 
 export interface ContactFormProps {
@@ -31,6 +33,10 @@ interface State {
     [key: string]: InputState;
   };
   gotcha: string;
+  recaptcha: {
+    key?: string;
+    error?: string;
+  };
 }
 
 export const inputsKey = "inputs";
@@ -75,6 +81,7 @@ export class ContactForm extends Component<ContactFormProps, State> {
   state: State = {
     inputs: initialInputsState(),
     gotcha: "",
+    recaptcha: {},
   };
 
   handleInputChange = (event: ChangeEvent<HTMLInputElement>): void => {
@@ -96,6 +103,15 @@ export class ContactForm extends Component<ContactFormProps, State> {
     sessionStorage.setItem(inputsKey, JSON.stringify(inputs));
   };
 
+  handleReCAPTCHAChange = (token: string | null): void => {
+    const recaptcha = { key: token ?? undefined };
+    this.setState({ recaptcha });
+  };
+
+  handleReCAPTCHAExpired = (): void => {
+    this.setState({ recaptcha: {} });
+  };
+
   handleFormSubmit = (event: FormEvent<HTMLFormElement>): void => {
     event.preventDefault();
 
@@ -104,7 +120,7 @@ export class ContactForm extends Component<ContactFormProps, State> {
       return;
     }
 
-    const { inputs } = this.state;
+    const { inputs, recaptcha } = this.state;
 
     // Validate inputs before submitting
     let hasError = false;
@@ -120,9 +136,15 @@ export class ContactForm extends Component<ContactFormProps, State> {
       }
     }
 
+    // Make sure reCAPTCHA was completed
+    if (!recaptcha.key) {
+      recaptcha.error = "reCAPTCHA Required.";
+      hasError = true;
+    }
+
     // If there were errors, abort the submit and display the errors
     if (hasError) {
-      this.setState({ inputs });
+      this.setState({ inputs, recaptcha });
       return;
     }
 
@@ -132,6 +154,8 @@ export class ContactForm extends Component<ContactFormProps, State> {
       email: inputs.email.value.trim().toLowerCase(),
       subject: inputs.subject.value.trim(),
       message: inputs.message.value.trim(),
+      // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+      recaptchaKey: recaptcha.key!,
     };
 
     // Pass data to parent
@@ -169,6 +193,8 @@ export class ContactForm extends Component<ContactFormProps, State> {
       );
     });
 
+    const recaptchaError = this.state.recaptcha.error;
+
     return (
       <Form onSubmit={this.handleFormSubmit} noValidate>
         {inputComponents}
@@ -178,6 +204,18 @@ export class ContactForm extends Component<ContactFormProps, State> {
           value={this.state.gotcha}
           onChange={this.handleInputChange}
         />
+        <FormGroup className="my-4 px-2 form-input">
+          <ReCAPTCHA
+            sitekey={process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY ?? ""}
+            onChange={this.handleReCAPTCHAChange}
+            onExpired={this.handleReCAPTCHAExpired}
+          />
+          <FormFeedback
+            className={classNames(styles.errorMessage, recaptchaError ? "d-block" : undefined)}
+          >
+            {recaptchaError ?? ""}
+          </FormFeedback>
+        </FormGroup>
         <ContactButton className="pt-3 pb-2 my-2">SUBMIT</ContactButton>
       </Form>
     );
