@@ -17,6 +17,7 @@
     "verify": "yarn lint && yarn check-types && yarn test"
   },
   "dependencies": {
+    "@sendgrid/mail": "^7.2.5",
     "bootstrap": "^4.5.2",
     "devicon": "^2.2.0",
     "next": "9.5.2",

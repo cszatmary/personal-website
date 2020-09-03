@@ -36,8 +36,7 @@ class ContactPage extends Component<{}, State> {
   };
 
   handleFormSubmit = (formValues: FormValues): void => {
-    // TODO stop using formspree
-    fetch("https://formspree.io/cs@christopherszatmary.com", {
+    fetch("/api/email", {
       method: "POST",
       headers: {
         Accept: "application/json",
