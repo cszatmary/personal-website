@@ -1,0 +1,34 @@
+@keyframes beat {
+  50% {
+    transform: scale(0.75);
+    opacity: 0.2;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+@mixin loader($i) {
+  $timing: 0s;
+  @if $i % 2 == 0 {
+    $timing: 0.35s;
+  }
+
+  display: inline-block;
+  border-radius: 100%;
+  animation: beat 0.7s $timing infinite linear;
+  animation-fill-mode: both;
+}
+
+.loaderBeat1 {
+  @include loader(1);
+}
+
+.loaderBeat2 {
+  @include loader(2);
+}
+
+.loaderBeat3 {
+  @include loader(3);
+}
