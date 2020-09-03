@@ -1,0 +1,15 @@
+@use "../partials/variables" as *;
+
+.input {
+  border-radius: 0;
+
+  &:global(.is-invalid) {
+    border-color: $error-red !important;
+    border-width: 0.125rem;
+  }
+}
+
+.errorMessage {
+  text-align: left;
+  align-self: flex-start;
+}

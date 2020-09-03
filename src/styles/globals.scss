@@ -101,7 +101,7 @@ p {
   }
 }
 
-// Navbar classes
+// Navbar styles
 
 .nav-item {
   @include set-color(background-color, $cs-dark-blue, $cs-blue);
@@ -123,4 +123,24 @@ p {
 
 .navbar-brand {
   font-size: 1.125rem;
+}
+
+// Fade Styles
+
+.fade-enter {
+  opacity: 0.01;
+
+  &.fade-enter-active {
+    opacity: 1;
+    transition: opacity 1000ms ease-in;
+  }
+}
+
+.fade-exit {
+  opacity: 1;
+
+  &.fade-exit-active {
+    opacity: 0.01;
+    transition: opacity 800ms ease-in;
+  }
 }
