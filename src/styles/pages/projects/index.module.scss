@@ -13,5 +13,8 @@
 
 .cardUrl {
   @include set-color(color, $cs-light-blue, $logo-color);
-  text-decoration: none !important;
+
+  &:hover {
+    text-decoration: none;
+  }
 }

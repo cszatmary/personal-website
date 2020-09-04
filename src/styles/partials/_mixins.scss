@@ -4,12 +4,6 @@
   }
 }
 
-@mixin media-range($min, $max) {
-  @media (min-width: $min) and (max-width: $max) {
-    @content;
-  }
-}
-
 @mixin set-background($image) {
   background: url($image) no-repeat center center;
   background-size: cover;

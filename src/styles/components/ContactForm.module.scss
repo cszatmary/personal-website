@@ -4,7 +4,7 @@
   border-radius: 0;
 
   &:global(.is-invalid) {
-    border-color: $error-red !important;
+    border-color: $error-red;
     border-width: 0.125rem;
   }
 }
