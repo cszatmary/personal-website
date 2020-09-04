@@ -10,7 +10,7 @@ import { Footer } from "@/components/Footer";
 const navItems = new Map([
   ["intro", "/"],
   ["about", "/about"],
-  ["portfolio", "/portfolio"],
+  ["projects", "/projects"],
   ["contact", "/contact"],
 ]);
 
