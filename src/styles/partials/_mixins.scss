@@ -9,15 +9,7 @@
   background-size: cover;
 }
 
-@mixin generate-border($thickness, $color, $side) {
-  @if $side == all {
-    border: $thickness solid $color;
-  } @else {
-    border-#{$side}: $thickness solid $color;
-  }
-}
-
-@mixin set-color($property, $color, $hover-color: $color) {
+@mixin set-color($property, $color, $hover-color) {
   #{$property}: $color;
 
   &:hover {
