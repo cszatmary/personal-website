@@ -11,7 +11,7 @@
   padding-top: 4rem;
 }
 
-.csLogoMain {
+.logoMain {
   max-width: 50%;
 
   @include media-breakpoint($md) {
@@ -33,7 +33,7 @@
   letter-spacing: 0.25rem;
   @include media-breakpoint($md) {
     text-align: left;
-    @include generate-border(white, 0.25rem, left);
+    border-left: 0.25rem solid white
   }
 }
 

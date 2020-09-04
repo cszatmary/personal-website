@@ -19,11 +19,11 @@
   @include shake(30);
 }
 
-.csAnimation {
+.animation {
   display: inline-block;
 }
 
-.csAnimationInfinite {
+.animationInfinite {
   animation-iteration-count: infinite !important;
 }
 

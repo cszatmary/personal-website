@@ -11,7 +11,7 @@ const IndexPage: FunctionComponent = () => {
         <Row className="align-items-center mb-2">
           <Col className={styles.logoContainer} md="3" lg="4">
             <img
-              className={classNames("img-fluid mx-auto", styles.csLogoMain)}
+              className={classNames("img-fluid mx-auto", styles.logoMain)}
               src="/images/logo/logo-white.png"
               alt="Logo"
             />

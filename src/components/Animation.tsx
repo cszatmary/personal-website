@@ -18,7 +18,7 @@ export interface AnimationProps {
 type HoverEvent<T> = MouseEvent<T> | TouchEvent<T>;
 
 const animationClasses = {
-  infinite: styles.csAnimationInfinite,
+  infinite: styles.animationInfinite,
 };
 
 export const Animation: FunctionComponent<AnimationProps> = ({
@@ -50,7 +50,7 @@ export const Animation: FunctionComponent<AnimationProps> = ({
   );
 
   const classes = classNames(
-    styles.csAnimation,
+    styles.animation,
     repeat ? animationClasses.infinite : undefined,
     !hover ? animationClass : undefined,
   );

@@ -10,14 +10,14 @@ export const Footer: FunctionComponent = () => (
     <Container fluid>
       <Row className="align-items-center">
         <Col className="text-center py-3" xs="12" md="5">
-          <span className={styles.csSpan}>Developed by Christopher Szatmary</span>
+          <span className={styles.span}>Developed by Christopher Szatmary</span>
         </Col>
         <Col className="text-center py-2" xs="12" md="2">
           <LogoImg version="mixed" />
         </Col>
         <Col className="text-center py-3" xs="12" md="5">
           All rights reserved.&nbsp;
-          <span className={styles.csSpan}>Copyright © 2017-2020 Christopher Szatmary.</span>
+          <span className={styles.span}>Copyright © 2017-2020 Christopher Szatmary.</span>
         </Col>
       </Row>
     </Container>
