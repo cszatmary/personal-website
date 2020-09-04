@@ -1,0 +1,17 @@
+@use "../../partials/variables" as *;
+@use "../../partials/mixins" as *;
+
+.projects {
+  @include set-background("/images/backgrounds/projects.jpg");
+}
+
+.card {
+  background-color: #474d5e;
+  width: 100%;
+  height: 100%;
+}
+
+.cardUrl {
+  @include set-color(color, $cs-light-blue, $logo-color);
+  text-decoration: none !important;
+}
