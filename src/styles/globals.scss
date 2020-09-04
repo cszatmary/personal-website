@@ -101,30 +101,6 @@ p {
   }
 }
 
-// Navbar styles
-
-.nav-item {
-  @include set-color(background-color, $cs-dark-blue, $cs-blue);
-}
-
-.navbar-dark .navbar-nav .nav-link {
-  @include set-color(color, white);
-}
-
-.nav-link {
-  @include media-breakpoint($md) {
-    @include set-property(padding, y, 1rem);
-  }
-
-  &.active {
-    background-color: $cs-light-blue;
-  }
-}
-
-.navbar-brand {
-  font-size: 1.125rem;
-}
-
 // Fade Styles
 
 .fade-enter {

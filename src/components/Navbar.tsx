@@ -34,13 +34,15 @@ export const Navbar: FunctionComponent<NavbarProps> = (props) => {
     // Need to add this check or `/` will match every link
     const path = router.pathname;
     if ((path === "/" && link === "/") || (path.startsWith(link) && link !== "/")) {
-      active = "active";
+      // Go home eslint you're drunk
+      // eslint-disable-next-line prefer-destructuring
+      active = styles.active;
     }
 
     items.push(
-      <NavItem key={item}>
+      <NavItem className={classNames(styles.navItem, active)} key={item}>
         <Link href={link}>
-          <a className={classNames("nav-link pl-2", active)} onClick={handleItemClicked}>
+          <a className={classNames("nav-link pl-2", styles.navLink)} onClick={handleItemClicked}>
             {item.toUpperCase()}
           </a>
         </Link>
@@ -50,7 +52,7 @@ export const Navbar: FunctionComponent<NavbarProps> = (props) => {
 
   return (
     <RSNavbar
-      className={classNames(styles.csNavbar, props.className)}
+      className={classNames(styles.navbar, props.className)}
       dark
       expand="md"
       role="navigation"
@@ -58,15 +60,18 @@ export const Navbar: FunctionComponent<NavbarProps> = (props) => {
       <Container>
         {/* Navbar Brand */}
         <Link href={props.brandLink ?? "/"}>
-          <a className="navbar-brand mr-auto" onClick={handleItemClicked}>
+          <a
+            className={classNames("navbar-brand mr-auto", styles.brandLink)}
+            onClick={handleItemClicked}
+          >
             <LogoImg version="mixed" />
             {props.brandText ? (
               <span className="d-none d-md-inline pl-2">{props.brandText}</span>
             ) : null}
           </a>
         </Link>
-        <NavbarToggler className={styles.csNavToggler} onClick={toggle}>
-          <span className={classNames("navbar-toggler-icon", styles.csTogglerIcon)} />
+        <NavbarToggler className={styles.navToggler} onClick={toggle}>
+          <span className={classNames("navbar-toggler-icon", styles.togglerIcon)} />
         </NavbarToggler>
         {/* Navbar Body */}
         <Collapse className="pl-2" isOpen={isOpen} navbar>
