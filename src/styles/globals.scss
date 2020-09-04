@@ -1,20 +1,12 @@
 @use "partials/variables" as *;
 @use "partials/mixins" as *;
 
-.full-height {
-  min-height: calc(100vh - 4rem);
-}
-
 .full-min-height {
   min-height: 100vh;
 }
 
 .white-text {
   color: white;
-}
-
-.black-text {
-  color: black;
 }
 
 .nunito {
@@ -27,10 +19,6 @@
 
 .letter-spaced {
   letter-spacing: 0.5rem;
-}
-
-.font-w6 {
-  font-weight: 600 !important;
 }
 
 // HTML Tags
