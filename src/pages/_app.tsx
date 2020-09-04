@@ -14,15 +14,11 @@ const navItems = new Map([
   ["contact", "/contact"],
 ]);
 
-const MyApp: FunctionComponent<AppProps> = ({ Component, pageProps }) => {
+const App: FunctionComponent<AppProps> = ({ Component, pageProps }) => {
   return (
     <div className="d-flex flex-column full-min-height">
       <Head>
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-        <link
-          href="https://fonts.googleapis.com/css?family=Josefin+Sans:400,600|Julius+Sans+One|Nunito"
-          rel="stylesheet"
-        />
         <title>Christopher Szatmary</title>
       </Head>
       <header>
@@ -35,4 +31,4 @@ const MyApp: FunctionComponent<AppProps> = ({ Component, pageProps }) => {
   );
 };
 
-export default MyApp;
+export default App;
