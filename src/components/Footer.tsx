@@ -2,7 +2,7 @@ import React, { FunctionComponent } from "react";
 import { Container, Row, Col } from "reactstrap";
 
 import styles from "@/styles/components/Footer.module.scss";
-import { classNames } from "@/utils/mod";
+import { classNames, constants } from "@/utils/mod";
 import { LinkBlank } from "./LinkBlank";
 import { LogoImg } from "./LogoImg";
 
@@ -14,14 +14,11 @@ export const Footer: FunctionComponent = () => {
           <Col className={classNames("py-3", styles.leftSection)} xs="12" md="5">
             <span className={styles.leftSpan}>Developed by Christopher Szatmary</span>
             <div className={styles.linkGroup}>
-              <LinkBlank
-                href="https://github.com/cszatma"
-                className={classNames("mx-2", styles.socialLink)}
-              >
+              <LinkBlank href={constants.github} className={classNames("mx-2", styles.socialLink)}>
                 <i className={classNames("devicon-github-plain", styles.socialIcon)} />
               </LinkBlank>
               <LinkBlank
-                href="https://www.linkedin.com/in/christopherszatmary/"
+                href={constants.linkedin}
                 className={classNames("mx-2", styles.socialLink)}
               >
                 <i className={classNames("devicon-linkedin-plain", styles.socialIcon)} />

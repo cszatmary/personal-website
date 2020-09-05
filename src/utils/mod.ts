@@ -1,3 +1,9 @@
+export const constants = Object.freeze({
+  email: "cs@christopherszatmary.com",
+  github: "https://github.com/cszatma",
+  linkedin: "https://www.linkedin.com/in/christopherszatmary",
+});
+
 export function classNames(
   staticNames: string,
   ...additionalNames: (string | undefined)[]

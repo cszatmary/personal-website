@@ -196,7 +196,7 @@ export class ContactForm extends Component<ContactFormProps, State> {
     const recaptchaError = this.state.recaptcha.error;
 
     return (
-      <Form onSubmit={this.handleFormSubmit} noValidate>
+      <Form className="text-center" onSubmit={this.handleFormSubmit} noValidate>
         {inputComponents}
         <Input
           className="d-none"
