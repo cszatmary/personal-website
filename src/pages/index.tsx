@@ -25,11 +25,9 @@ const IndexPage: FunctionComponent = () => {
               <span className={styles.logoColored}>/&gt;</span>
             </h2>
           </Col>
-          <button className={classNames("btn btn-lg", styles.aboutBtn)} type="button">
-            <Link href="/about">
-              <a className={styles.aboutLink}>About Me</a>
-            </Link>
-          </button>
+          <Link href="/about">
+            <a className={classNames("btn btn-lg", styles.aboutLink)}>About Me</a>
+          </Link>
         </Row>
       </Container>
     </div>

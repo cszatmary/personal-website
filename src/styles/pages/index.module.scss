@@ -41,12 +41,9 @@
   color: $cs-dark-blue;
 }
 
-.aboutBtn {
+.aboutLink {
   @include set-color(background-color, $cs-dark-blue, $cs-blue);
   @include set-property(margin, y, 1rem);
-}
-
-.aboutLink {
   color: white;
 
   &:hover {
