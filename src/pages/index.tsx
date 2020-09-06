@@ -1,4 +1,5 @@
 import React, { FunctionComponent } from "react";
+import Link from "next/link";
 import { Container, Row, Col } from "reactstrap";
 
 import styles from "@/styles/pages/index.module.scss";
@@ -8,7 +9,7 @@ const IndexPage: FunctionComponent = () => {
   return (
     <div className={classNames("align-items-center d-flex flex-grow-1", styles.intro)}>
       <Container className={classNames("text-center white-text", styles.introBody)}>
-        <Row className="align-items-center mb-2">
+        <Row className="align-items-center mb-2 justify-content-center">
           <Col className={styles.logoContainer} md="3" lg="4">
             <img
               className={classNames("img-fluid mx-auto", styles.logoMain)}
@@ -24,6 +25,11 @@ const IndexPage: FunctionComponent = () => {
               <span className={styles.logoColored}>/&gt;</span>
             </h2>
           </Col>
+          <button className={classNames("btn btn-lg", styles.aboutBtn)} type="button">
+            <Link href="/about">
+              <a className={styles.aboutLink}>About Me</a>
+            </Link>
+          </button>
         </Row>
       </Container>
     </div>

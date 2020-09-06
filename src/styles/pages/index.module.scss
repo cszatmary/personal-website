@@ -40,3 +40,17 @@
 .logoColored {
   color: $cs-dark-blue;
 }
+
+.aboutBtn {
+  @include set-color(background-color, $cs-dark-blue, $cs-blue);
+  @include set-property(margin, y, 1rem);
+}
+
+.aboutLink {
+  color: white;
+
+  &:hover {
+    color: white;
+    text-decoration: none;
+  }
+}

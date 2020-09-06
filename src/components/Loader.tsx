@@ -3,6 +3,7 @@ import React, { FunctionComponent, CSSProperties } from "react";
 import styles from "@/styles/components/Loader.module.scss";
 
 export interface LoaderProps {
+  className?: string;
   color?: string;
   loading?: boolean;
   margin: string;
@@ -24,7 +25,7 @@ export const Loader: FunctionComponent<LoaderProps> = (props) => {
   }
 
   return (
-    <div>
+    <div className={props.className}>
       <div className={styles.loaderBeat1} style={createStyles(props)} />
       <div className={styles.loaderBeat2} style={createStyles(props)} />
       <div className={styles.loaderBeat3} style={createStyles(props)} />

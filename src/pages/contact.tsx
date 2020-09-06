@@ -1,12 +1,13 @@
 import React, { Component } from "react";
-import { Container, Row, Col } from "reactstrap";
+import { Container, Row } from "reactstrap";
 import { TransitionGroup, CSSTransition } from "react-transition-group";
 
 import { ContactButton } from "@/components/ContactButton";
 import { ContactForm, FormValues, inputsKey } from "@/components/ContactForm";
 import { Loader } from "@/components/Loader";
+import { LinkBlank } from "@/components/LinkBlank";
 import styles from "@/styles/pages/contact.module.scss";
-import { classNames } from "@/utils/mod";
+import { classNames, constants } from "@/utils/mod";
 
 const statuses = {
   success: {
@@ -78,14 +79,14 @@ class ContactPage extends Component<{}, State> {
     }
 
     if (this.state.submissionPending) {
-      return <Loader size="1.5rem" margin="0.5rem 0.125rem 0.125rem" />;
+      return <Loader className="text-center" size="1.5rem" margin="0.5rem 0.125rem 0.125rem" />;
     }
 
     const status = this.state.formSubmittedOk ? statuses.success : statuses.error;
 
     return (
       <CSSTransition classNames="fade" timeout={1000}>
-        <div className="my-5">
+        <div className="my-5 text-center">
           <h2 className="mb-3">{status.title}</h2>
           <h3 className="mb-3">{status.subtitle}</h3>
           <ContactButton className="pt-2 my-3" size="lg" onClick={this.handleNewFormClicked}>
@@ -101,13 +102,30 @@ class ContactPage extends Component<{}, State> {
 
     return (
       <div className={classNames("white-text d-flex flex-grow-1", styles.contact)}>
-        <Container className="text-center py-5">
-          <h1 className="my-4 letter-spaced">CONTACT</h1>
+        <Container className="py-5">
+          <h1 className="my-4 letter-spaced text-center">CONTACT</h1>
           <hr className={styles.headerUnderline} />
-          <Row className="pt-4">
-            <Col>
-              <h5>Email: cs@christopherszatmary.com</h5>
-            </Col>
+          <Row className="pt-4 justify-content-center">
+            <div>
+              <h5>
+                <strong>Email: </strong>
+                <LinkBlank className={styles.link} href={`mailto:${constants.email}`}>
+                  {constants.email}
+                </LinkBlank>
+              </h5>
+              <h5>
+                <strong>GitHub: </strong>
+                <LinkBlank className={styles.link} href={constants.github}>
+                  cszatma
+                </LinkBlank>
+              </h5>
+              <h5>
+                <strong>LinkedIn: </strong>
+                <LinkBlank className={styles.link} href={constants.linkedin}>
+                  in/christopherszatmary
+                </LinkBlank>
+              </h5>
+            </div>
           </Row>
           <Row className="justify-content-center mt-3">
             <TransitionGroup

@@ -1,34 +1,6 @@
 @use "../partials/variables" as *;
 @use "../partials/mixins" as *;
 
-@mixin social-link($hover-color) {
-  color: black;
-  font-size: 2rem;
-
-  @include media-breakpoint($md) {
-    font-size: 3rem;
-  }
-
-  &:hover {
-    transition: color 0.5s ease-in-out;
-    color: $hover-color;
-  }
-}
-
-.socialLink {
-  &:hover {
-    text-decoration: none;
-  }
-}
-
-.socialLink > :global(.devicon-github-plain) {
-  @include social-link($cs-dark-blue);
-}
-
-.socialLink > :global(.devicon-linkedin-plain) {
-  @include social-link(#007bb6);
-}
-
 .skillIcon {
   font-size: 3rem;
 
