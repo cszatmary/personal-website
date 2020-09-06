@@ -26,7 +26,9 @@ const IndexPage: FunctionComponent = () => {
             </h2>
           </Col>
           <Link href="/about">
-            <a className={classNames("btn btn-lg", styles.aboutLink)}>About Me</a>
+            <a className={classNames("btn btn-lg", styles.aboutLink)}>
+              <h3 className="pt-2 mb-0">About Me</h3>
+            </a>
           </Link>
         </Row>
       </Container>
