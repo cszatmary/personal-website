@@ -106,7 +106,6 @@ class ContactPage extends Component<{}, State> {
           <h1 className="my-4 letter-spaced text-center">CONTACT</h1>
           <hr className={styles.headerUnderline} />
           <Row className="pt-4 justify-content-center">
-            {/* <Col> */}
             <div>
               <h5>
                 <strong>Email: </strong>
@@ -127,7 +126,6 @@ class ContactPage extends Component<{}, State> {
                 </LinkBlank>
               </h5>
             </div>
-            {/* </Col> */}
           </Row>
           <Row className="justify-content-center mt-3">
             <TransitionGroup
