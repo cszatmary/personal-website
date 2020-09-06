@@ -12,8 +12,7 @@
 
   &:hover:not([disabled]) {
     background-color: $highlight-gray;
-    box-shadow: 0 0.25rem 1rem rgba(52, 138, 255, 0.1),
-      0.5rem 0.25rem 1rem rgba(52, 138, 255, 0.1);
+    box-shadow: 0 0.25rem 1rem rgba(52, 138, 255, 0.1), 0.5rem 0.25rem 1rem rgba(52, 138, 255, 0.1);
     cursor: pointer;
     transform: translateY(-0.0625rem);
   }
