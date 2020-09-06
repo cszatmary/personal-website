@@ -33,7 +33,7 @@
   letter-spacing: 0.25rem;
   @include media-breakpoint($md) {
     text-align: left;
-    border-left: 0.25rem solid white
+    border-left: 0.25rem solid white;
   }
 }
 
