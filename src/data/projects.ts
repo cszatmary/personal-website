@@ -90,7 +90,7 @@ const cannonProject: Project = {
     main: [
       `$(code, commit-cannon) is a small CLI tool that allows you to apply changes to multiple repos.
       It is very useful if there are a number of small changes that all need to be made to a large amount of repos.
-      While working on the Developer Accelerate team I noticed that we frequently had this use case.
+      While working on the Developer Accelerate team at TouchBistro I noticed that we frequently had this use case.
       We had 20+ microservices that we needed to make the same configuration changes to.
       Having to go into each repo and make the changes was an extremely tedious process, so I decided to automate it.`,
       `The biggest challenge with $(code, commit-cannon) was coming up with a a simple yet flexible and robust configuration format.
