@@ -1,0 +1,13 @@
+@use "../../partials/variables" as *;
+@use "../../partials/mixins" as *;
+
+.navLink {
+  @include set-color(background-color, $cs-dark-blue, $cs-blue);
+  @include set-property(margin, y, 1rem);
+  color: white;
+
+  &:hover {
+    color: white;
+    text-decoration: none;
+  }
+}
