@@ -1,6 +1,17 @@
 @use "../../partials/variables" as *;
 @use "../../partials/mixins" as *;
 
+.navContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  @include media-breakpoint($sm) {
+    flex-direction: row;
+    justify-content: space-between;
+  }
+}
+
 .navLink {
   @include set-color(background-color, $cs-dark-blue, $cs-blue);
   @include set-property(margin, y, 1rem);
