@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React, { Component, ReactNode } from "react";
 import { Container, Row } from "reactstrap";
 import { TransitionGroup, CSSTransition } from "react-transition-group";
 
@@ -73,7 +73,7 @@ class ContactPage extends Component<{}, State> {
     this.setState({ formIsVisible: true });
   };
 
-  renderContent(): JSX.Element {
+  renderContent(): ReactNode {
     if (this.state.formIsVisible) {
       return <ContactForm onSubmit={this.handleFormSubmit} />;
     }
@@ -97,7 +97,7 @@ class ContactPage extends Component<{}, State> {
     );
   }
 
-  render(): JSX.Element {
+  render(): ReactNode {
     const { formIsVisible } = this.state;
 
     return (

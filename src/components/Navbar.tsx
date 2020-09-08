@@ -1,4 +1,4 @@
-import React, { FunctionComponent, useState } from "react";
+import React, { FunctionComponent, useState, ReactElement } from "react";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import { Navbar as RSNavbar, NavbarToggler, Nav, NavItem, Collapse, Container } from "reactstrap";
@@ -28,7 +28,7 @@ export const Navbar: FunctionComponent<NavbarProps> = (props) => {
     }
   }
 
-  const items: JSX.Element[] = [];
+  const items: ReactElement[] = [];
   for (const [item, link] of props.items) {
     let active: undefined | string;
     // Need to add this check or `/` will match every link
