@@ -57,7 +57,7 @@ const ProjectPage: FunctionComponent<Props> = (props) => {
           <ProjectContent template={template} data={project.data} />
         ))}
       </Container>
-      <Container className="py-3 d-flex justify-content-between">
+      <Container className={classNames("py-3", styles.navContainer)}>
         <Link href="/projects/[project]" as={`/projects/${props.previous.name}`}>
           <a className={classNames("btn btn-lg", styles.navLink)}>
             <h5 className="pt-1 mb-0">{props.previous.title}</h5>
