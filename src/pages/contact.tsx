@@ -116,7 +116,7 @@ class ContactPage extends Component<{}, State> {
               <h5>
                 <strong>GitHub: </strong>
                 <LinkBlank className={styles.link} href={constants.github}>
-                  cszatma
+                  cszatmary
                 </LinkBlank>
               </h5>
               <h5>
