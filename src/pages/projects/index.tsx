@@ -1,47 +1,30 @@
 import React, { FunctionComponent } from "react";
+import { GetStaticProps } from "next";
 import Link from "next/link";
 import { Container, Card, CardTitle, CardBody } from "reactstrap";
 
+import type { Project } from "@/data/projects";
+import * as projects from "@/data/projects";
 import styles from "@/styles/pages/projects/index.module.scss";
 import { classNames } from "@/utils/mod";
 
-const items = [
-  {
-    title: "tb CLI",
-    text: "A CLI that makes it easy to run services and apps locally.",
-    link: "/projects/tb",
-  },
-  {
-    title: "commit-cannon",
-    text: "A tool to automate changes across multiple git repos.",
-    link: "/projects/commit-cannon",
-  },
-  // TODO add these later
-  // {
-  //   title: "dockerfiles",
-  //   text: "A collection of useful dockerfiles for different situations.",
-  //   link: "/projects/dockerfiles",
-  // },
-  // {
-  //   title: "This website",
-  //   text: "My personal website built with Next.js.",
-  //   link: "/projects/personal-website",
-  // },
-];
+interface Props {
+  projects: Project[];
+}
 
-const ProjectsPage: FunctionComponent = () => {
-  const cards = items.map((item) => (
-    <li className="col-sm-6 col-md-4 col-lg-3 py-2" key={item.title}>
+const ProjectsPage: FunctionComponent<Props> = (props) => {
+  const cards = props.projects.map(({ name, card }) => (
+    <li className="col-sm-6 col-md-4 col-lg-3 py-2" key={card.title}>
       <Card className={styles.card}>
-        <Link href={item.link}>
+        <Link href="/projects/[project]" as={`/projects/${name}`}>
           <a className={styles.cardUrl}>
             <CardTitle className="mt-3 text-center" tag="h4">
-              {item.title}
+              {card.title}
             </CardTitle>
           </a>
         </Link>
         <CardBody>
-          <h5>{item.text}</h5>
+          <h5>{card.description}</h5>
         </CardBody>
       </Card>
     </li>
@@ -59,3 +42,11 @@ const ProjectsPage: FunctionComponent = () => {
 };
 
 export default ProjectsPage;
+
+export const getStaticProps: GetStaticProps<Props> = async () => {
+  return {
+    props: {
+      projects: projects.all(),
+    },
+  };
+};

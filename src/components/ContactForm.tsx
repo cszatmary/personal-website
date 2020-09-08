@@ -1,4 +1,4 @@
-import React, { Component, FormEvent, ChangeEvent } from "react";
+import React, { Component, FormEvent, ChangeEvent, ReactNode } from "react";
 import { Form, FormGroup, Input, InputProps, FormFeedback } from "reactstrap";
 import validator from "validator";
 import ReCAPTCHA from "react-google-recaptcha";
@@ -162,7 +162,7 @@ export class ContactForm extends Component<ContactFormProps, State> {
     this.props.onSubmit(formValues);
   };
 
-  render(): JSX.Element {
+  render(): ReactNode {
     const { inputs } = this.state;
     const inputComponents = Object.entries(inputs).map(([name, input]) => {
       let type: InputProps["type"];
