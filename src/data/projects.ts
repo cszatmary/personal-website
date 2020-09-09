@@ -32,8 +32,8 @@ const tbProject: Project = {
   imageAlt: "tb CLI",
   sections: {
     main: [
-      `$(code, tb) is a tool design to make it really easy to run services locally through
-      docker. It automatically takes care of grabbing the latest version of a service, building
+      `$(code, tb) is a tool designed to make it really easy to run services locally through
+      Docker. It automatically takes care of grabbing the latest version of a service, building
       it if needed, performing any necessary actions before starting the service (ex: database
       migrations). It can run groups of services that are defined in a playlist. It can also run
       iOS applications in the iOS simulator if you are on macOS. I helped build $(code, tb)
@@ -41,23 +41,23 @@ const tbProject: Project = {
       `$(code, tb) was a great learning experience with regards to how to design a good
       program and evolve it over time. When it was first built our goal was to have a good
       internal tool that worked for TouchBistro developers for their specific use cases.
-      However, later on we saw how useful and effective $(code, tb) was and we wanted to
-      share it with the rest of the world so we decided to open source it. This presented the
-      challenge of how to generalize all the functionality so it didn&apos;t assume anything
-      specific about TouchBistro. The forced us to design a good interface that was easy to use
-      out of the box but also allowed for customization where necessary.`,
+      Later on we saw how useful and effective $(code, tb) was. We wanted to share it with the
+      rest of the world so we decided to open source it. This presented the challenge of how to
+      generalize all the functionality so it didn't assume anything specific about TouchBistro.
+      This forced us to design a good interface that was easy to use out of the box but also
+      allowed for customization where necessary.`,
     ],
     technologies: [
       `$(code, tb) is built in Go. Go is a great language for writing CLI tools. It is simple
       and easy to learn but fast and powerful. This was the first time I ever used Go and
       working on a non-trivial program like $(code, tb) helped me get really comfortable
       with it.`,
-      `$(code, tb) also heavily relies on docker and docker-compose. Docker allows it so that
-      $(code, tb) can be language agnostic. It does not matter if your service is written in
-      Go, Ruby, JavaScript, etc, as long as it can run in a docker container $(code, tb) can
-      run it. This was a great opportunity to get really familiar with docker since I needed a
-      solid understanding of of how docker works in order to implement the desired functionality
-      in tb.`,
+      `$(code, tb) also heavily relies on Docker and docker-compose. Since it uses Docker,
+      $(code, tb) is language agnostic. It does not matter if your service is written in
+      Go, Ruby, JavaScript, etc. As long as it can run in a Docker container $(code, tb) can
+      run it. This was a great opportunity to get really familiar with Docker since I needed a
+      solid understanding of of how Docker works in order to implement the desired functionality
+      in $(code, tb).`,
     ],
     links: [
       `Check out the $(link, GITHUB_REPO) for more information about $(code, tb) and how to use it.
@@ -88,10 +88,10 @@ const cannonProject: Project = {
   title: "commit-cannon - Automate changes across git repos",
   sections: {
     main: [
-      `$(code, commit-cannon) is a small CLI tool that allows you to apply changes to multiple repos.
-      It is very useful if there are a number of small changes that all need to be made to a large amount of repos.
-      While working on the Developer Accelerate team at TouchBistro I noticed that we frequently had this use case.
-      We had 20+ microservices that we needed to make the same configuration changes to.
+      `$(code, commit-cannon) is a small CLI tool that allows you to quickly apply changes to multiple repos.
+      It is very useful if there are a number of small but identical changes that all need to be made to a large amount of repos.
+      While working on the Developer Acceleration team at TouchBistro I found myself having to do this manually a lot.
+      We had 20+ microservices which needed the same configuration changes.
       Having to go into each repo and make the changes was an extremely tedious process, so I decided to automate it.`,
       `The biggest challenge with $(code, commit-cannon) was coming up with a a simple yet flexible and robust configuration format.
       The config file needed to be able to express all the various use cases required (modify lines, delete lines, create files, etc)

@@ -1,4 +1,4 @@
-import React, { FunctionComponent } from "react";
+import React, { FunctionComponent, ReactNode } from "react";
 import { GetStaticPaths, GetStaticProps } from "next";
 import Link from "next/link";
 import { Container } from "reactstrap";
@@ -25,7 +25,7 @@ interface Props {
 const ProjectPage: FunctionComponent<Props> = (props) => {
   const { project } = props;
 
-  let img: React.ReactNode = null;
+  let img: ReactNode = null;
   if (project.image) {
     img = (
       <img

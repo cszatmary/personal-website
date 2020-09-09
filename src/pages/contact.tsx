@@ -13,7 +13,6 @@ const statuses = {
   success: {
     title: "Thanks for reaching out!",
     subtitle: "I'll be in touch shortly.",
-    buttonTitle: "NEW FORM",
   },
   error: {
     title: "There was an error",
@@ -69,7 +68,7 @@ class ContactPage extends Component<{}, State> {
     this.setState({ formIsVisible: false, submissionPending: true });
   };
 
-  handleNewFormClicked = (): void => {
+  handleRetryClicked = (): void => {
     this.setState({ formIsVisible: true });
   };
 
@@ -89,9 +88,11 @@ class ContactPage extends Component<{}, State> {
         <div className="my-5 text-center">
           <h2 className="mb-3">{status.title}</h2>
           <h3 className="mb-3">{status.subtitle}</h3>
-          <ContactButton className="pt-2 my-3" size="lg" onClick={this.handleNewFormClicked}>
-            {status.buttonTitle}
-          </ContactButton>
+          {this.state.formSubmittedOk ? null : (
+            <ContactButton className="pt-2 my-3" size="lg" onClick={this.handleRetryClicked}>
+              {statuses.error.buttonTitle}
+            </ContactButton>
+          )}
         </div>
       </CSSTransition>
     );
