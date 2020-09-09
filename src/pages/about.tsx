@@ -74,16 +74,16 @@ const AboutPage: FunctionComponent = () => {
       <Container className="py-3">
         <h2 className="my-2">What even is Developer Acceleration?</h2>
         <p>
-          Developer Accelerate (Dev Accel) is all about making it easy as possible for developers to
-          deliver value to customers. I build tools to make local development as easy and painless
-          as possible. I also set up CI/CD processes to make it easy and safe to ship code to
+          Developer Acceleration is all about making it easy as possible for developers to deliver
+          value to customers. I build tools to make local development as easy and painless as
+          possible. I also set up CI/CD processes to make it easy and safe to ship code to
           production and roll it back when something goes wrong.
         </p>
         <p>
-          I&apos;ve always enjoyed the area of developer efficiency and Dev Accel has been a perfect
-          fit for me. Any time I find something tedious that I constantly have to do that slows me
-          down, or I find something that is way harder than it should be, I find a way to automate
-          it.
+          I&apos;ve always enjoyed the area of developer efficiency and Developer Acceleration has
+          been a perfect fit for me. Any time I find something tedious that I constantly have to do
+          that slows me down, or I find something that is way harder than it should be, I find a way
+          to automate it.
         </p>
       </Container>
       <Container className="py-3">
