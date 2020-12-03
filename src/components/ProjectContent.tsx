@@ -29,9 +29,13 @@ export const ProjectContent: FunctionComponent<ProjectContentProps> = (props) =>
         throw new Error(`key ${arg} not in links dictionary`);
       }
 
-      elements.push(<LinkBlank href={linkDetails.link}>{linkDetails.text}</LinkBlank>);
+      elements.push(
+        <LinkBlank key={elements.length} href={linkDetails.link}>
+          {linkDetails.text}
+        </LinkBlank>,
+      );
     } else if (funcName === "code") {
-      elements.push(<code>{arg}</code>);
+      elements.push(<code key={elements.length}>{arg}</code>);
     } else {
       throw new Error(`unknown func name ${funcName}`);
     }

@@ -2,7 +2,7 @@ import React, { FunctionComponent, ReactNode } from "react";
 import { GetStaticPaths, GetStaticProps } from "next";
 import Link from "next/link";
 import { Container } from "reactstrap";
-import { panic } from "@cszatma/node-stdlib";
+import { panic } from "typescript-stdlib";
 
 import { ProjectContent } from "@/components/ProjectContent";
 import type { Project } from "@/data/projects";
@@ -41,20 +41,26 @@ const ProjectPage: FunctionComponent<Props> = (props) => {
       <Container className="py-3 d-flex flex-column">
         <h2 className="my-2">{project.title}</h2>
         {img}
-        {project.sections.main.map((template) => (
-          <ProjectContent template={template} data={project.data} />
+        {project.sections.main.map((template, i) => (
+          <React.Fragment key={i}>
+            <ProjectContent template={template} data={project.data} />
+          </React.Fragment>
         ))}
       </Container>
       <Container className="py-3">
         <h3 className="my-2">What technologies does it use?</h3>
-        {project.sections.technologies.map((template) => (
-          <ProjectContent template={template} data={project.data} />
+        {project.sections.technologies.map((template, i) => (
+          <React.Fragment key={i}>
+            <ProjectContent template={template} data={project.data} />
+          </React.Fragment>
         ))}
       </Container>
       <Container className="py-3">
         <h3 className="my-2">Want to know more?</h3>
-        {project.sections.links.map((template) => (
-          <ProjectContent template={template} data={project.data} />
+        {project.sections.links.map((template, i) => (
+          <React.Fragment key={i}>
+            <ProjectContent template={template} data={project.data} />
+          </React.Fragment>
         ))}
       </Container>
       <Container className={classNames("py-3", styles.navContainer)}>

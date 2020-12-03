@@ -1,9 +1,8 @@
 import { NextApiRequest, NextApiResponse } from "next";
 import MailService from "@sendgrid/mail";
-import nodeFetch from "node-fetch";
-import { Result, env, log } from "@cszatma/node-stdlib";
+import { Result, env, log } from "typescript-stdlib";
 
-const fetch = Result.resultifyPromise(nodeFetch);
+const safeFetch = Result.resultifyPromise(fetch);
 log.std.formatter = new log.TextFormatter({ disableTimestamp: true });
 
 async function emailHandler(req: NextApiRequest, res: NextApiResponse): Promise<void> {
@@ -55,7 +54,7 @@ async function emailHandler(req: NextApiRequest, res: NextApiResponse): Promise<
   }
 
   // Verify reCAPTCHA
-  const result = await fetch("https://www.google.com/recaptcha/api/siteverify", {
+  const result = await safeFetch("https://www.google.com/recaptcha/api/siteverify", {
     method: "post",
     headers: {
       Accept: "application/json",
