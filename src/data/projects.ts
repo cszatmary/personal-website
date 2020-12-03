@@ -1,4 +1,4 @@
-import { panic } from "@cszatma/node-stdlib";
+import { panic } from "typescript-stdlib";
 
 export interface ProjectData {
   links: Record<string, { text: string; link: string } | undefined>;

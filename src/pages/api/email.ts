@@ -1,9 +1,8 @@
 import { NextApiRequest, NextApiResponse } from "next";
 import MailService from "@sendgrid/mail";
-import nodeFetch from "node-fetch";
-import { Result, env, log } from "@cszatma/node-stdlib";
+import { Result, env, log } from "typescript-stdlib";
 
-const fetch = Result.resultifyPromise(nodeFetch);
+const safeFetch = Result.resultifyPromise(fetch);
 log.std.formatter = new log.TextFormatter({ disableTimestamp: true });
 
 async function emailHandler(req: NextApiRequest, res: NextApiResponse): Promise<void> {
@@ -55,7 +54,7 @@ async function emailHandler(req: NextApiRequest, res: NextApiResponse): Promise<
   }
 
   // Verify reCAPTCHA
-  const result = await fetch("https://www.google.com/recaptcha/api/siteverify", {
+  const result = await safeFetch("https://www.google.com/recaptcha/api/siteverify", {
     method: "post",
     headers: {
       Accept: "application/json",
@@ -78,7 +77,7 @@ async function emailHandler(req: NextApiRequest, res: NextApiResponse): Promise<
   }
 
   const verifyBody = await result.success().json();
-  if (!verifyBody.success) {
+  if (verifyBody.success !== true) {
     log.std.warn("reCAPTCHA verification failed", {
       result: verifyBody,
     });
@@ -101,18 +100,19 @@ async function emailHandler(req: NextApiRequest, res: NextApiResponse): Promise<
   <strong>Message:</strong>
   <p>${req.body.message}</p>`;
 
-  try {
-    await MailService.send({
+  const mailResult = await Result.ofPromise(() => {
+    return MailService.send({
       to: "cs@christopherszatmary.com",
       from: "noreply@christopherszatmary.com",
       subject: "New contact form submission",
       html: emailBody,
     });
-  } catch (err) {
+  });
+  if (mailResult.isFailure()) {
     // TODO figure out better error handling
     // need to figure out what err actually is
     log.std.error("Failed to send email", {
-      error: err,
+      error: result.failure(),
     });
     res.status(500).json({
       error: {
