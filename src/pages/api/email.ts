@@ -77,7 +77,7 @@ async function emailHandler(req: NextApiRequest, res: NextApiResponse): Promise<
   }
 
   const verifyBody = await result.success().json();
-  if (!verifyBody.success) {
+  if (verifyBody.success !== true) {
     log.std.warn("reCAPTCHA verification failed", {
       result: verifyBody,
     });
@@ -100,18 +100,19 @@ async function emailHandler(req: NextApiRequest, res: NextApiResponse): Promise<
   <strong>Message:</strong>
   <p>${req.body.message}</p>`;
 
-  try {
-    await MailService.send({
+  const mailResult = await Result.ofPromise(() => {
+    return MailService.send({
       to: "cs@christopherszatmary.com",
       from: "noreply@christopherszatmary.com",
       subject: "New contact form submission",
       html: emailBody,
     });
-  } catch (err) {
+  });
+  if (mailResult.isFailure()) {
     // TODO figure out better error handling
     // need to figure out what err actually is
     log.std.error("Failed to send email", {
-      error: err,
+      error: result.failure(),
     });
     res.status(500).json({
       error: {

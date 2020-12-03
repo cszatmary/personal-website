@@ -25,7 +25,8 @@ export const ProjectContent: FunctionComponent<ProjectContentProps> = (props) =>
     // Handle func
     if (funcName === "link") {
       const linkDetails = data.links[arg];
-      if (!linkDetails) {
+      if (linkDetails === undefined) {
+        // eslint-disable-next-line no-restricted-syntax
         throw new Error(`key ${arg} not in links dictionary`);
       }
 
@@ -37,6 +38,7 @@ export const ProjectContent: FunctionComponent<ProjectContentProps> = (props) =>
     } else if (funcName === "code") {
       elements.push(<code key={elements.length}>{arg}</code>);
     } else {
+      // eslint-disable-next-line no-restricted-syntax
       throw new Error(`unknown func name ${funcName}`);
     }
   }

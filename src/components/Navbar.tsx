@@ -65,7 +65,7 @@ export const Navbar: FunctionComponent<NavbarProps> = (props) => {
             onClick={handleItemClicked}
           >
             <LogoImg version="mixed" />
-            {props.brandText ? (
+            {props.brandText !== undefined ? (
               <span className="d-none d-md-inline pl-2">{props.brandText}</span>
             ) : null}
           </a>

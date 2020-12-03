@@ -4,16 +4,17 @@ export const constants = Object.freeze({
   linkedin: "https://www.linkedin.com/in/christopherszatmary",
 });
 
-export function classNames(
-  staticNames: string,
-  ...additionalNames: (string | undefined)[]
-): string {
-  const names = [staticNames.trim()];
-  for (const n of additionalNames) {
+/**
+ * classNames creates a single class string from the given arguments.
+ * It will filter any `undefined` values.
+ */
+export function classNames(...names: (string | undefined)[]): string {
+  const buf: string[] = [];
+  for (const n of names) {
     if (typeof n === "string") {
-      names.push(n);
+      buf.push(n.trim());
     }
   }
 
-  return names.join(" ");
+  return buf.join(" ");
 }

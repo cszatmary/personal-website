@@ -53,8 +53,14 @@ function initialInputsState(): State["inputs"] {
     return inputs;
   }
 
-  const parsedValue: unknown = JSON.parse(sessionStorage.getItem(inputsKey) || "null");
-  if (typeof parsedValue !== "object" || !parsedValue) {
+  let rawValue = sessionStorage.getItem(inputsKey);
+  if (rawValue == null || rawValue === "") {
+    // Ensure JSON parsing always succeeds
+    rawValue = "null";
+  }
+
+  const parsedValue: unknown = JSON.parse(rawValue);
+  if (typeof parsedValue !== "object" || parsedValue == null) {
     return inputs;
   }
 
@@ -64,7 +70,7 @@ function initialInputsState(): State["inputs"] {
       continue;
     }
 
-    if (typeof savedInputs[name] !== "object" || !savedInputs[name]) {
+    if (typeof savedInputs[name] !== "object" || savedInputs[name] == null) {
       continue;
     }
 
@@ -116,7 +122,7 @@ export class ContactForm extends Component<ContactFormProps, State> {
     event.preventDefault();
 
     // If gotcha is filled prevent form submit
-    if (this.state.gotcha) {
+    if (this.state.gotcha !== "") {
       return;
     }
 
@@ -137,7 +143,7 @@ export class ContactForm extends Component<ContactFormProps, State> {
     }
 
     // Make sure reCAPTCHA was completed
-    if (!recaptcha.key) {
+    if (recaptcha.key === undefined) {
       recaptcha.error = "reCAPTCHA Required.";
       hasError = true;
     }
@@ -211,7 +217,10 @@ export class ContactForm extends Component<ContactFormProps, State> {
             onExpired={this.handleReCAPTCHAExpired}
           />
           <FormFeedback
-            className={classNames(styles.errorMessage, recaptchaError ? "d-block" : undefined)}
+            className={classNames(
+              styles.errorMessage,
+              recaptchaError !== undefined ? "d-block" : undefined,
+            )}
           >
             {recaptchaError ?? ""}
           </FormFeedback>

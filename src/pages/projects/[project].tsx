@@ -26,7 +26,7 @@ const ProjectPage: FunctionComponent<Props> = (props) => {
   const { project } = props;
 
   let img: ReactNode = null;
-  if (project.image) {
+  if (project.image !== undefined) {
     img = (
       <img
         className={classNames("img-fluid mx-auto my-3")}
@@ -42,6 +42,7 @@ const ProjectPage: FunctionComponent<Props> = (props) => {
         <h2 className="my-2">{project.title}</h2>
         {img}
         {project.sections.main.map((template, i) => (
+          // eslint-disable-next-line react/no-array-index-key
           <React.Fragment key={i}>
             <ProjectContent template={template} data={project.data} />
           </React.Fragment>
@@ -50,6 +51,7 @@ const ProjectPage: FunctionComponent<Props> = (props) => {
       <Container className="py-3">
         <h3 className="my-2">What technologies does it use?</h3>
         {project.sections.technologies.map((template, i) => (
+          // eslint-disable-next-line react/no-array-index-key
           <React.Fragment key={i}>
             <ProjectContent template={template} data={project.data} />
           </React.Fragment>
@@ -58,6 +60,7 @@ const ProjectPage: FunctionComponent<Props> = (props) => {
       <Container className="py-3">
         <h3 className="my-2">Want to know more?</h3>
         {project.sections.links.map((template, i) => (
+          // eslint-disable-next-line react/no-array-index-key
           <React.Fragment key={i}>
             <ProjectContent template={template} data={project.data} />
           </React.Fragment>
