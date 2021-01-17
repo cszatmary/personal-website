@@ -11,8 +11,10 @@ export interface Project {
     description: string;
   };
   title: string;
-  image?: string;
-  imageAlt?: string;
+  image?: {
+    path: string;
+    alt: string;
+  };
   sections: {
     main: string[];
     technologies: string[];
@@ -28,8 +30,10 @@ const tbProject: Project = {
     description: "A CLI that makes it easy to run services and apps locally.",
   },
   title: "tb CLI - Easily run apps and services locally",
-  image: "/images/projects/tb-main.jpg",
-  imageAlt: "tb CLI",
+  image: {
+    path: "/images/projects/tb-main.jpg",
+    alt: "tb CLI",
+  },
   sections: {
     main: [
       `$(code, tb) is a tool designed to make it really easy to run services locally through

@@ -1,4 +1,4 @@
-import React, { FunctionComponent, ReactNode } from "react";
+import React, { FunctionComponent } from "react";
 import { GetStaticPaths, GetStaticProps } from "next";
 import Link from "next/link";
 import { Container } from "reactstrap";
@@ -24,23 +24,17 @@ interface Props {
 
 const ProjectPage: FunctionComponent<Props> = (props) => {
   const { project } = props;
-
-  let img: ReactNode = null;
-  if (project.image !== undefined) {
-    img = (
-      <img
-        className={classNames("img-fluid mx-auto my-3")}
-        src={project.image}
-        alt={project.imageAlt}
-      />
-    );
-  }
-
   return (
     <div className={classNames("d-flex flex-column flex-grow-1", styles.projects)}>
       <Container className="py-3 d-flex flex-column">
         <h2 className="my-2">{project.title}</h2>
-        {img}
+        {project.image !== undefined ? (
+          <img
+            className={classNames("img-fluid mx-auto my-3")}
+            src={project.image.path}
+            alt={project.image.alt}
+          />
+        ) : null}
         {project.sections.main.map((template, i) => (
           // eslint-disable-next-line react/no-array-index-key
           <React.Fragment key={i}>
@@ -95,7 +89,6 @@ export const getStaticPaths: GetStaticPaths = async () => {
       params: { project: project.name },
     };
   });
-
   return {
     paths,
     fallback: false,
