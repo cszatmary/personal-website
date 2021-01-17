@@ -11,8 +11,10 @@ export interface Project {
     description: string;
   };
   title: string;
-  image?: string;
-  imageAlt?: string;
+  image?: {
+    path: string;
+    alt: string;
+  };
   sections: {
     main: string[];
     technologies: string[];
@@ -28,8 +30,10 @@ const tbProject: Project = {
     description: "A CLI that makes it easy to run services and apps locally.",
   },
   title: "tb CLI - Easily run apps and services locally",
-  image: "/images/projects/tb-main.jpg",
-  imageAlt: "tb CLI",
+  image: {
+    path: "/images/projects/tb-main.jpg",
+    alt: "tb CLI",
+  },
   sections: {
     main: [
       `$(code, tb) is a tool designed to make it really easy to run services locally through
@@ -67,7 +71,7 @@ const tbProject: Project = {
   data: {
     links: {
       GITHUB_REPO: {
-        text: "GitHub repo",
+        text: "GitHub repository",
         link: "https://github.com/TouchBistro/tb",
       },
       BLOG_POST: {
@@ -107,7 +111,7 @@ const cannonProject: Project = {
   data: {
     links: {
       GITHUB_REPO: {
-        text: "GitHub repo",
+        text: "GitHub repository",
         link: "https://github.com/TouchBistro/cannon",
       },
       BLOG_POST: {
@@ -119,19 +123,47 @@ const cannonProject: Project = {
   },
 };
 
-// TODO add these later
-// {
-//   title: "dockerfiles",
-//   text: "A collection of useful dockerfiles for different situations.",
-//   link: "/projects/dockerfiles",
-// },
-// {
-//   title: "This website",
-//   text: "My personal website built with Next.js.",
-//   link: "/projects/personal-website",
-// },
+const gehenProject: Project = {
+  name: "gehen",
+  card: {
+    title: "gehen",
+    description: "A small tool to update AWS ECS services.",
+  },
+  title: "gehen - Easily update ECS services.",
+  sections: {
+    main: [
+      `$(code, gehen) is a small CLI tool that makes it easy to deploy updates to AWS Elastic Container Service (ECS) services.
+      It updates the docker image used by the service, deploys a new version, and waits for the cutover to be complete.
+      $(code, gehen) will check that the new version of the service has been deployed, and wait until all old versions have stopped running.
+      If the deployment of the new version fails, $(code, gehen) will recover by rolling back to the previous version to ensure the ECS service
+      does not remain in a bad state. $(code, gehen) has been a crucial component of the Continuous Delivery (CD) process at TouchBistro.`,
+      `As the CD processes at TouchBistro evolved, $(code, gehen) required changes to support new use cases.
+      The challenge here was how to implement the necessary functionality without making $(code, gehen) coupled to TouchBistro's internal tools and use cases.
+      The desire was to keep $(code, gehen) as simple as possible, and to have it be orthogonal to the other tools it was used in conjunction with.
+      If a new feature was being added, or a change was being made, it had to be done in such a way that did not compromise the design of $(code, gehen).
+      It had to be implemented as a general purpose API that could make sense in other use cases,
+      instead of a specific one that old made sense to the use case at TouchBistro.`,
+    ],
+    technologies: [
+      `$(code, gehen) is built in Go. It uses the AWS SDK to make the necessary changes on ECS.
+      This was a great opportunity for me to get familiar with the AWS SDK and some of the AWS APIs.
+      I gained a better understanding of how ECS works and the components involved with it.`,
+    ],
+    links: [
+      `Check out the $(link, GITHUB_REPO) for more information about $(code, gehen) and how to use it.`,
+    ],
+  },
+  data: {
+    links: {
+      GITHUB_REPO: {
+        text: "GitHub repository",
+        link: "https://github.com/TouchBistro/gehen",
+      },
+    },
+  },
+};
 
-const projects = [tbProject, cannonProject];
+const projects = [tbProject, cannonProject, gehenProject];
 const projectPositions = new Map<string, number>();
 
 for (let i = 0; i < projects.length; i++) {
@@ -143,7 +175,6 @@ export function find(name: string): Project {
   if (pos === undefined) {
     panic(`find: No such project ${name}`);
   }
-
   return projects[pos];
 }
 
@@ -161,7 +192,6 @@ export function previous(project: Project): Project {
   if (index < 0) {
     index = projects.length - 1;
   }
-
   return projects[index];
 }
 
@@ -175,6 +205,5 @@ export function next(project: Project): Project {
   if (index >= projects.length) {
     index = 0;
   }
-
   return projects[index];
 }

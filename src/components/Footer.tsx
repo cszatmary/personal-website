@@ -12,7 +12,12 @@ export const Footer: FunctionComponent = () => {
       <Container fluid>
         <Row className="d-flex align-items-center">
           <Col className={classNames("py-3", styles.leftSection)} xs="12" md="5">
-            <span className={styles.leftSpan}>Developed by Christopher Szatmary</span>
+            <LinkBlank
+              href="https://github.com/cszatmary/personal-website"
+              className={styles.repoLink}
+            >
+              Developed by Christopher Szatmary
+            </LinkBlank>
             <div className={styles.linkGroup}>
               <LinkBlank href={constants.github} className={classNames("mx-2", styles.socialLink)}>
                 <i className={classNames("devicon-github-plain", styles.socialIcon)} />

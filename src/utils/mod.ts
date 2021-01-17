@@ -15,6 +15,5 @@ export function classNames(...names: (string | undefined)[]): string {
       buf.push(n.trim());
     }
   }
-
   return buf.join(" ");
 }
