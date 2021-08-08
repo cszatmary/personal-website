@@ -76,8 +76,7 @@ const tbProject: Project = {
       },
       BLOG_POST: {
         text: "blog post",
-        link:
-          "https://medium.com/touchbistro-development/tb-cli-simplifying-development-in-a-complicated-microservices-world-65da00a14c87",
+        link: "https://medium.com/touchbistro-development/tb-cli-simplifying-development-in-a-complicated-microservices-world-65da00a14c87",
       },
     },
   },
@@ -116,8 +115,7 @@ const cannonProject: Project = {
       },
       BLOG_POST: {
         text: "blog post",
-        link:
-          "https://medium.com/touchbistro-development/commit-cannon-open-source-project-899ee75794c0",
+        link: "https://medium.com/touchbistro-development/commit-cannon-open-source-project-899ee75794c0",
       },
     },
   },

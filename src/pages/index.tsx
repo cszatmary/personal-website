@@ -1,11 +1,12 @@
-import React, { FunctionComponent } from "react";
+import React from "react";
+import { NextPage } from "next";
 import Link from "next/link";
 import { Container, Row, Col } from "reactstrap";
 
 import styles from "@/styles/pages/index.module.scss";
 import { classNames } from "@/utils/mod";
 
-const IndexPage: FunctionComponent = () => {
+const IndexPage: NextPage = () => {
   return (
     <div className={classNames("align-items-center d-flex flex-grow-1", styles.intro)}>
       <Container className={classNames("text-center white-text", styles.introBody)}>
