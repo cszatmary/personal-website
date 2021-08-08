@@ -11,28 +11,8 @@ async function emailHandler(req: NextApiRequest, res: NextApiResponse): Promise<
     return;
   }
 
-  const requiredEnvVars = ["SENDGRID_API_KEY", "RECAPTCHA_SECRET_KEY"];
-  const missingEnvVars: string[] = [];
-  for (const envVar of requiredEnvVars) {
-    if (!env.isEnvSet(envVar)) {
-      missingEnvVars.push(envVar);
-    }
-  }
-
-  if (missingEnvVars.length > 0) {
-    log.std.error("Missing required env var(s)", {
-      envVars: missingEnvVars,
-    });
-    res.status(500).json({
-      error: {
-        code: "err_missing_env_vars",
-        message: `Missing the required env var(s): ${missingEnvVars.join(", ")}`,
-      },
-    });
-    return;
-  }
-
-  MailService.setApiKey(env.getEnv("SENDGRID_API_KEY"));
+  env.requireKeys("SENDGRID_API_KEY", "RECAPTCHA_SECRET_KEY");
+  MailService.setApiKey(env.get("SENDGRID_API_KEY"));
 
   // Verify all fields are present in the body
   const requiredFields = ["name", "email", "subject", "message", "recaptchaKey"];
@@ -60,7 +40,7 @@ async function emailHandler(req: NextApiRequest, res: NextApiResponse): Promise<
       Accept: "application/json",
       "Content-Type": "application/x-www-form-urlencoded; charset=utf-8",
     },
-    body: `secret=${env.getEnv("RECAPTCHA_SECRET_KEY")}&response=${req.body.recaptchaKey}`,
+    body: `secret=${env.get("RECAPTCHA_SECRET_KEY")}&response=${req.body.recaptchaKey}`,
   });
 
   if (result.isFailure()) {

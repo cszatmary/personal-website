@@ -34,7 +34,7 @@ jobs:
       - run:
           name: Deploy to vercel
           command: |
-            if [[ "$CIRCLE_BRANCH" == "master" ]]; then
+            if [[ "$CIRCLE_BRANCH" == "main" ]]; then
               vercel --prod --token $VERCEL_TOKEN
             else
               vercel --token $VERCEL_TOKEN
