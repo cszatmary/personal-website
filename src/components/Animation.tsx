@@ -4,6 +4,7 @@ import React, {
   AnimationEvent,
   MouseEvent,
   TouchEvent,
+  ReactNode,
 } from "react";
 
 import styles from "@/styles/components/Animation.module.scss";
@@ -13,6 +14,7 @@ export interface AnimationProps {
   animation: string;
   hover?: boolean;
   repeat?: boolean;
+  children?: ReactNode;
 }
 
 type HoverEvent<T> = MouseEvent<T> | TouchEvent<T>;

@@ -14,6 +14,8 @@
     "react/state-in-constructor": ["error", "never"],
     "react/static-property-placement": ["error", "static public field"],
     "@typescript-eslint/naming-convention": ["off"],
-    "react/jsx-one-expression-per-line": ["off"]
+    "react/jsx-one-expression-per-line": ["off"],
+    "react/function-component-definition": ["off"],
+    "react/require-default-props": ["off"]
   }
 }
