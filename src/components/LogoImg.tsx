@@ -17,6 +17,7 @@ export const LogoImg: FunctionComponent<LogoImgProps> = ({ version, style, ...pr
 );
 
 LogoImg.defaultProps = {
+  // eslint-disable-next-line react/default-props-match-prop-types
   version: "default",
   style: {
     width: "3rem",
