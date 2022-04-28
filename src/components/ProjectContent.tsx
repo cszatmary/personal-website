@@ -10,7 +10,7 @@ export interface ProjectContentProps {
 
 export const ProjectContent: FunctionComponent<ProjectContentProps> = (props) => {
   const { template, data } = props;
-  const funcRegex = /\$\(([\w]+), ([\w-]+)\)/g;
+  const funcRegex = /\$\(([\w]+), ([\w-\s]+)\)/g;
   let match: RegExpExecArray | null;
   const elements: ReactNode[] = [];
   let startIndex = 0;

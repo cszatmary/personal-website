@@ -47,13 +47,13 @@ const AboutPage: FunctionComponent = () => {
             <Row className="py-2">
               <p className="px-3">
                 Hi I&apos;m Chris, a software developer with a passion for automation. I love
-                building tools to automate common tasks and solve interesting problems. I am
-                currently enrolled at Ryerson University majoring in Computer Science and minoring
-                in Mathematics.
+                building tools to automate common tasks and solve interesting problems. I studied
+                Computer Science at Ryerson University and minored in Mathematics. My favourite area
+                of mathematics is Graph Theory.
               </p>
               <p className="px-3">
-                I also enjoy playing pinball (real tables not digital) and watching hockey. I cheer
-                for the Toronto Maple Leafs for better or for worse.
+                I also enjoy playing pinball (physical tables not digital) and watching hockey. I
+                cheer for the Toronto Maple Leafs for better or for worse.
               </p>
             </Row>
           </Col>
@@ -66,10 +66,7 @@ const AboutPage: FunctionComponent = () => {
           currently use:
         </p>
         <Row className="my-3">{skills}</Row>
-        <p>
-          I have recently fallen in love with the roles of developer acceleration and production
-          engineering.
-        </p>
+        <p>I primarily enjoy the roles of developer acceleration and production engineering.</p>
       </Container>
       <Container className="py-3">
         <h2 className="my-2">What even is Developer Acceleration?</h2>

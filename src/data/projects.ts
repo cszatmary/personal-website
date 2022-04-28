@@ -85,26 +85,26 @@ const tbProject: Project = {
 const cannonProject: Project = {
   name: "cannon",
   card: {
-    title: "commit-cannon",
+    title: "cannon",
     description: "A tool to automate changes across multiple git repos.",
   },
-  title: "commit-cannon - Automate changes across git repos",
+  title: "cannon - Automate changes across git repos",
   sections: {
     main: [
-      `$(code, commit-cannon) is a small CLI tool that allows you to quickly apply changes to multiple repos.
+      `$(code, cannon) is a small CLI tool that allows you to quickly apply changes to multiple repos.
       It is very useful if there are a number of small but identical changes that all need to be made to a large amount of repos.
       While working on the Developer Acceleration team at TouchBistro I found myself having to do this manually a lot.
       We had 20+ microservices which needed the same configuration changes.
       Having to go into each repo and make the changes was an extremely tedious process, so I decided to automate it.`,
-      `The biggest challenge with $(code, commit-cannon) was coming up with a a simple yet flexible and robust configuration format.
+      `The biggest challenge with $(code, cannon) was coming up with a a simple yet flexible and robust configuration format.
       The config file needed to be able to express all the various use cases required (modify lines, delete lines, create files, etc)
       but also be easy to understand and use. I created a set of actions that seemed to cover all use cases and also allowed
       regular expressions to be used when matching text in files.`,
     ],
-    technologies: [`$(code, commit-cannon) is built in Go.`],
+    technologies: [`$(code, cannon) is built in Go.`],
     links: [
-      `Check out the $(link, GITHUB_REPO) for more information about $(code, commit-cannon) and how to use it.
-      Also check out the $(link, BLOG_POST) I wrote for the TouchBistro Engineering blog about $(code, commit-cannon).`,
+      `Check out the $(link, GITHUB_REPO) for more information about $(code, cannon) and how to use it.
+      Also check out the $(link, BLOG_POST) I wrote for the TouchBistro Engineering blog about $(code, cannon).`,
     ],
   },
   data: {
@@ -161,7 +161,46 @@ const gehenProject: Project = {
   },
 };
 
-const projects = [tbProject, cannonProject, gehenProject];
+const shedProject: Project = {
+  name: "shed",
+  card: {
+    title: "shed",
+    description: "A CLI for managing Go tool dependencies.",
+  },
+  title: "shed - Easily manage Go tool dependencies",
+  image: {
+    path: "/images/projects/shed-main.png",
+    alt: "shed CLI",
+  },
+  sections: {
+    main: [
+      `$(code, shed) is a tool that makes it easy to install and pin specific versions of go tool dependencies.
+      This allows for consistent and reproducible local development and CI environments. When developing a go project
+      I often use tools such as golangci-lint or goreleaser. Unfortunately, go doesn't currently provide an easy way to
+      manage tools like this. So I decided to create $(code, shed) to solve this problem.`,
+      `My goal with $(code, shed) was to have UI be familiar and consistent with other go tools. You can easily install
+      a tool with $(code, shed get) and provide it a go import path, similar to $(code, go get).`,
+    ],
+    technologies: [
+      `$(code, shed) is built in Go. It leverages go modules and $(code, go get) behind the scenes to handle
+      resolving and downloading tools. This allowed me to focus on the UI and UX of $(code, shed) instead of reinventing the wheel
+      when it comes to dependency management.`,
+    ],
+    links: [
+      `Check out the $(link, GITHUB_REPO) for more information about $(code, shed) and how to use it.`,
+    ],
+  },
+  data: {
+    links: {
+      GITHUB_REPO: {
+        text: "Github repository",
+        link: "https://github.com/cszatmary/shed",
+      },
+    },
+  },
+};
+
+const projects = [tbProject, cannonProject, gehenProject, shedProject];
 const projectPositions = new Map<string, number>();
 
 for (let i = 0; i < projects.length; i++) {
