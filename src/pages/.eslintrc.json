@@ -1,6 +1,0 @@
-{
-  "rules": {
-    // Next requires the use of default exports for pages
-    "import/no-default-export": ["off"]
-  }
-}

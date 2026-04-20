@@ -1,65 +1,22 @@
 {
   "name": "personal-website",
-  "version": "0.1.0",
   "private": true,
+  "type": "module",
   "scripts": {
-    "dev": "next dev",
-    "build": "next build",
-    "start": "next start",
-    "check-types": "tsc",
-    "fmt": "prettier --write 'src/**/*.{ts,tsx,scss}'",
-    "lint": "eslint --ext=ts,tsx ./src",
-    "lint:fix": "eslint --fix --ext=ts,tsx ./src",
-    "prepare": "husky install",
-    "test": "NODE_ENV=test jest --coverage",
-    "test:ci": "NODE_ENV=test jest --coverage --runInBand --colors",
-    "test:nocover": "NODE_ENV=test jest",
-    "test:watch": "NODE_ENV=test jest --watch",
-    "verify": "yarn lint && yarn check-types && yarn test"
-  },
-  "dependencies": {
-    "@sendgrid/mail": "^7.6.2",
-    "bootstrap": "^4.5.3",
-    "devicon": "^2.15.1",
-    "next": "12.1.5",
-    "react": "18.1.0",
-    "react-dom": "18.1.0",
-    "react-google-recaptcha": "^2.1.0",
-    "react-transition-group": "^4.4.2",
-    "reactstrap": "^8.9.0",
-    "sass": "^1.51.0",
-    "typescript-stdlib": "^0.3.0",
-    "validator": "^13.7.0"
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "wrangler dev",
+    "fmt": "oxfmt",
+    "prepare": "husky"
   },
   "devDependencies": {
-    "@shiphub/eslint-config": "^0.0.3",
-    "@types/node": "^14.14.21",
-    "@types/react": "^18.0.8",
-    "@types/react-google-recaptcha": "^2.1.5",
-    "@types/react-transition-group": "^4.4.4",
-    "@types/reactstrap": "^8.7.2",
-    "@types/validator": "^13.7.2",
-    "@typescript-eslint/eslint-plugin": "^5.21.0",
-    "@typescript-eslint/parser": "^5.21.0",
-    "eslint": "^8.14.0",
-    "eslint-config-airbnb": "^19.0.4",
-    "eslint-config-next": "^12.1.5",
-    "eslint-import-resolver-typescript": "^2.7.1",
-    "eslint-plugin-import": "^2.26.0",
-    "eslint-plugin-react": "^7.29.4",
-    "eslint-plugin-react-hooks": "^4.5.0",
-    "husky": "^7.0.4",
-    "lint-staged": "^12.4.1",
-    "prettier": "^2.6.2",
-    "typescript": "^4.6.3"
+    "husky": "^9.1.7",
+    "oxfmt": "^0.46.0",
+    "vite": "^8.0.9",
+    "wrangler": "^4.84.0"
   },
-  "lint-staged": {
-    "*.{ts,tsx,scss,json}": [
-      "prettier --write"
-    ]
+  "engines": {
+    "node": ">=24"
   },
-  "prettier": {
-    "trailingComma": "all",
-    "printWidth": 100
-  }
+  "packageManager": "pnpm@10.33.0+sha512.10568bb4a6afb58c9eb3630da90cc9516417abebd3fabbe6739f0ae795728da1491e9db5a544c76ad8eb7570f5c4bb3d6c637b2cb41bfdcdb47fa823c8649319"
 }
